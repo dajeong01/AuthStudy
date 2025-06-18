@@ -43,7 +43,7 @@ public class SecurityConfig {
         http.csrf(csrf -> csrf.disable());                  // 서버사이드 렌더링 로그인 방식 비활성화
         http.formLogin(formLogin -> formLogin.disable());   // 서버사이드 렌더링 로그인 방식 비활성화
         http.httpBasic(httpBasic -> httpBasic.disable());   // HTTP 프로토콜 기본 로그인 방식 비활성화
-        http.logout(logout -> logout.disable());            // 서버사이드 렌더링 로스아웃 병식 비활성화
+        http.logout(logout -> logout.disable());            // 서버사이드 렌더링 로그아웃 병식 비활성화
 
         // 특정 요청 ul에 대한 권한 설정
         http.authorizeHttpRequests(auth -> auth.anyRequest().permitAll());

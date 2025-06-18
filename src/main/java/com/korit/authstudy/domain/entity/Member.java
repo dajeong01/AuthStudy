@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@Builder                // builder 패턴에서는 @AllArgsConstructor가 필수로 동반되어야함
 @Entity
 @Table(name = "members_tb")
 public class Member {
@@ -23,5 +23,4 @@ public class Member {
     private String password;
     private String name;
     private String email;
-
 }

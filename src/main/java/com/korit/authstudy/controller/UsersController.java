@@ -1,5 +1,7 @@
 package com.korit.authstudy.controller;
 
+import com.korit.authstudy.dto.LoginDto;
+import com.korit.authstudy.dto.LoginDto;
 import com.korit.authstudy.dto.UserRegisterDto;
 import com.korit.authstudy.service.UsersService;
 import lombok.RequiredArgsConstructor;
@@ -15,9 +17,18 @@ public class UsersController {
 
     private final UsersService usersService;
 
+    private LoginDto userLoginDto;
+
     @PostMapping
     public ResponseEntity<?> registerUser(@RequestBody UserRegisterDto dto) {
         log.info("DTO: {}", dto);
         return ResponseEntity.ok(usersService.register(dto));
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody LoginDto dto){
+        System.out.println(dto);
+        usersService.login(dto);
+        return ResponseEntity.ok(null);
     }
 }
