@@ -1,6 +1,5 @@
 package com.korit.authstudy.dto;
 
-
 import com.korit.authstudy.domain.entity.Member;
 
 import lombok.Data;
@@ -27,6 +26,4 @@ public class MemberRegisterDto {
                 .email(email)
                 .build();
     }
-
-
 }

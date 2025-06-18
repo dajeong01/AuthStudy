@@ -23,7 +23,5 @@ public class MembersController {
     public ResponseEntity<?> registerMember(@RequestBody MemberRegisterDto dto) {
         log.info("dto : {}", dto);
         return ResponseEntity.ok(membersService.register(dto));
-
-
     }
 }
