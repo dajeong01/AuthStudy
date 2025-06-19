@@ -1,7 +1,6 @@
 package com.korit.authstudy.security.jwt;
 
-import io.jsonwebtoken.JwtBuilder;
-import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,7 +14,7 @@ public class JwtUtil {
 
     private final Key KEY;
 
-    public JwtUtil(@Value("${jwt.secret}") String secret){
+    public JwtUtil(@Value("${jwt.secret}") String secret) {
         KEY = Keys.hmacShaKeyFor(Decoders.BASE64.decode(secret));
     }
 
@@ -29,5 +28,26 @@ public class JwtUtil {
         String token = jwtBuilder.compact();        // 입력된 정보로 문자열 JWT 토큰 생성
         System.out.println(token);
         return token;
+    }
+
+    public boolean isBearer(String token) {
+        if (token == null) {
+            return false;
+        }
+        if (!token.startsWith("Bearer ")) {
+            return false;
+        }
+        return true;
+    }
+
+    public String removeBearer(String bearerToken) {
+        return bearerToken.replaceFirst("Bearer ", "");
+    }
+
+    public Claims getClaims(String token) {
+        JwtParserBuilder jwtParserBuilder = Jwts.parser();
+        jwtParserBuilder.setSigningKey(KEY);
+        JwtParser jwtParser = jwtParserBuilder.build();
+        return jwtParser.parseClaimsJws(token).getPayload();
     }
 }

@@ -1,5 +1,6 @@
 package com.korit.authstudy.controller;
 
+import com.korit.authstudy.exception.BearerValidException;
 import jdk.jshell.Snippet;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,5 +17,10 @@ public class ControllerAdvice {
     @ExceptionHandler(AuthenticationException.class)
     public ResponseEntity<?> unAuthorized(AuthenticationException exception) {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(exception.getMessage());
+    }
+
+    @ExceptionHandler(BearerValidException.class)
+    public ResponseEntity<?> isNotBearer(BearerValidException exception) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMessage());
     }
 }
