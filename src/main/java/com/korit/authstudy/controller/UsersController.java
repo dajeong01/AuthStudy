@@ -38,8 +38,6 @@ public class UsersController {
     @GetMapping("/login/status")
     public ResponseEntity<?> getLoginStatus(@RequestHeader("Authorization") String authorization) {
         System.out.println(authorization);
-        jwtService.validAccessToken(authorization);
-        return ResponseEntity.ok(true);
-
+        return ResponseEntity.ok(jwtService.validLoginAccessToken(authorization));
     }
 }

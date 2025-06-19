@@ -1,6 +1,7 @@
 package com.korit.authstudy.controller;
 
 import com.korit.authstudy.exception.BearerValidException;
+import io.jsonwebtoken.JwtException;
 import jdk.jshell.Snippet;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,5 +23,10 @@ public class ControllerAdvice {
     @ExceptionHandler(BearerValidException.class)
     public ResponseEntity<?> isNotBearer(BearerValidException exception) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMessage());
+    }
+
+    @ExceptionHandler(JwtException.class)
+    public ResponseEntity<?> jwtError(JwtException exception){
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(exception.getMessage());
     }
 }

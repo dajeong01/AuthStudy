@@ -39,7 +39,6 @@ public class SecurityConfig {
         // GET, POST, PUT, DELETE 등 모든 HTTP 메서드 허용
         corsConfiguration.addAllowedMethod(CorsConfiguration.ALL);
 
-
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", corsConfiguration);
         return source;
