@@ -46,10 +46,10 @@ public class Lambda implements CommandLineRunner {
 
         // 람다로 표현하면
         Consumer<User> consumerLambda = (user1) -> {
-            System.out.println("user객체 찾음: " + user1);
+            System.out.println("user1객체 찾음: " + user1);
         };
         Runnable runnableLambda = () -> {
-            System.out.println("user객체 못 찾아서 여기서 다른 작업 할 거임.");
+            System.out.println("user1객체 못 찾아서 여기서 다른 작업 할 거임.");
         };
         optionalStudy.ifPresentOrElse(consumerLambda, runnableLambda);
     }
