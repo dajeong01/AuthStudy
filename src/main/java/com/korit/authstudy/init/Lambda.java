@@ -51,6 +51,6 @@ public class Lambda implements CommandLineRunner {
         Runnable runnableLambda = () -> {
             System.out.println("user객체 못 찾아서 여기서 다른 작업 할 거임.");
         };
-        optionalStudy.ifPresentOrElse(consumer, runnable);
+        optionalStudy.ifPresentOrElse(consumerLambda, runnableLambda);
     }
 }
