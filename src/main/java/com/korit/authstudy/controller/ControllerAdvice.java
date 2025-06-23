@@ -1,6 +1,7 @@
 package com.korit.authstudy.controller;
 
 import com.korit.authstudy.exception.BearerValidException;
+import com.korit.authstudy.exception.MyAccountException;
 import io.jsonwebtoken.JwtException;
 import jdk.jshell.Snippet;
 import org.springframework.http.HttpStatus;
@@ -28,5 +29,10 @@ public class ControllerAdvice {
     @ExceptionHandler(JwtException.class)
     public ResponseEntity<?> jwtError(JwtException exception){
         return ResponseEntity.status(HttpStatus.FORBIDDEN).body(exception.getMessage());
+    }
+
+    @ExceptionHandler(MyAccountException.class)
+    public ResponseEntity<?> isNotMyAccount(MyAccountException exception){
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(exception.getErrorMessage());
     }
 }

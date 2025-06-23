@@ -17,18 +17,11 @@ public class PrincipalUser implements UserDetails {
     private String username;
     @JsonIgnore // json으로 변환할때 이거는 제외시킴
     private String password;
+    private String fullName;
+    private String email;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of();
     }
-
-//    @Override
-//    public String getPassword() {
-//        return password;
-//    }
-//    @Override
-//    public String getUsername() {
-//        return username;
-//    } 롬북에서 설정되어있어서 생략가능함
 }

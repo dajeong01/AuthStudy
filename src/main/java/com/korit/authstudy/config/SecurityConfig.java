@@ -56,7 +56,7 @@ public class SecurityConfig {
         http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
         // 특정 요청 ul에 대한 권한 설정
         http.authorizeHttpRequests(auth -> {
-            auth.requestMatchers("/api/users","/api/users/login", "/api/users/login/status", "/api/users/principal").permitAll();
+            auth.requestMatchers("/api/users","/api/users/login", "/api/users/login/status", "/api/users/principal", "a").permitAll();
             auth.anyRequest().authenticated();
             // 모든 요청과 인증이 필요함
         });
